@@ -1,72 +1,101 @@
 package ca.uqam.mgl7460.tp1.types.modeles;
 
 /**
- * Cette classe représente les demandeur-se-s de prêt
+ * Cette classe représente les demendeur-se-s de prêt.
  */
-public interface DemandeurPret {
+public class DemandeurPretImpl implements DemandeurPret {
+
+    private String nom;
+    private String prenom;
+    private String nas;
+    private float revenuAnnuel;
+    private float obligationsAnnuelles;
+    private int scoreCredit;
+
+    public DemandeurPretImpl(String prenom, String nom, String nas, float revenuAnnuel, float obligationsAnnuelles, int scoreCredit) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.nas = nas;
+        this.revenuAnnuel = revenuAnnuel;
+        this.obligationsAnnuelles = obligationsAnnuelles;
+        this.scoreCredit = scoreCredit;
+    }
 
     /**
-     * retourne le nom.
-     * @return
+     * Retourne le nom 
      */
-    public String getNom();
+    public String getNom() {
+        return nom;
+    }
 
     /**
-     * retourne le prenom
-     * @return
+     * Retourne le prénom
      */
-    public String getPrenom();
+    public String getPrenom() {
+        return prenom;
+    }
 
     /**
-     * retourne le numéro d'assurance sociale
-     * @return
+     * Retourne le numéro d’assurance sociale
      */
-    public String getNas();
+    public String getNas() {
+        return nas;
+    }
 
     /**
-     * retourne le revenu annuel brut
+     * Retourne le revenu annuel brut
      */
-    public float getRevenuAnnuel();
+    
+    public float getRevenuAnnuel() {
+        return revenuAnnuel;
+    }
 
     /**
-     * modifie le revenu annuel brut
-     * @param revenu
+     * Modifie le revenu annuel brut
+     * @param revenu Nouveau revenu annuel
      */
-    public void setRevenuAnnuel(float revenu);
+    public void setRevenuAnnuel(float revenu) {
+        this.revenuAnnuel = revenu;
+    }
 
     /**
-     * retourne les obligations annuelles de l'emprunteur-se, 
-     * c'est à dire, les choses qu'il/elle doit payer, qui sont 
-     * incompressibles, telles les frais de logement, transport pour
-     * se rendre au travail, etc. En d'autre termes, les dépenses
-     * incompressibles.
-     * @return
+     * Retourne les obligations financières annuelles incompressibles
      */
-    public float getObligationsAnnuelles();
+    public float getObligationsAnnuelles() {
+        return obligationsAnnuelles;
+    }
 
     /**
-     * cette méthode modifie les obligations annuelles de l'emprunteur-se
-     * @param obligations
+     * Modifie les obligations financières annuelles incompressibles
+     * @param obligations nouvelles obligations
      */
-    public void setObligationsAnnuelles(float obligations);
+    public void setObligationsAnnuelles(float obligations) {
+        this.obligationsAnnuelles = obligations;
+    }
 
     /**
-     * cette méthode retourne le taux d'endettement de l'emprunteur-se
-     * ("debt over income ratio"), qui consiste, simplement, en le
-     * ratio obligationsAnnuelles/revenuAnnuel
-     * @return
+     * Retourne le taux d’endettement (obligations/revenu)
      */
-    public float getTauxEndettement();
+    public float getTauxEndettement() {
+        if (revenuAnnuel <= 0) return 0f;
+        return obligationsAnnuelles / revenuAnnuel;
+    }
 
     /**
-     * retourne la cote de crédit de l'emprunteur-se
-     * @return
+     * Retourne la cote de crédit
      */
-    public int getScoreCredit();
+    
+    public int getScoreCredit() {
+        return scoreCredit;
+    }
 
     /**
-     * modifie la cote de crédit de l'emprunteur-se
-     * @param score
+     * Modifie la cote de crédit
      */
-    public void setScoreCredit(int score);
+    
+    public void setScoreCredit(int score) {
+        this.scoreCredit = score;
+    }
+
+    }
 }
