@@ -11,31 +11,14 @@ import java.util.UUID;
 
 public class DemandePretImpl implements DemandePret {
 
-    /** Numéro unique de la demande */
     private final String numeroDemande;
-
-    /** Date de création de la demande */
     private final Instant dateDemande;
-
-    /** Demandeur (emprunteur-se) */
     private final DemandeurPret demandeurPret;
-
-    /** Propriété mise en garantie */
     private final Propriete propriete;
-
-    /** Montant du prêt demandé */
     private final float montantPret;
-
-    /** Montant de la mise de fonds */
     private float montantMiseDeFonds;
-
-    /** Prix d’achat de la propriété */
     private float prixAchat;
-
-    /** Résultat du traitement (ACCEPTEE, REFUSEE, NONDETERMINE) */
     private ResultatTraitement resultatTraitement;
-
-    /** Termes du prêt (taux d’intérêt et durée) */
     private TermesPret termesPret;
 
     public DemandePretImpl(Propriete propriete, DemandeurPret demandeurPret, float prixAchat, float montantMiseDeFonds) {
@@ -46,7 +29,7 @@ public class DemandePretImpl implements DemandePret {
         this.prixAchat = prixAchat;
         this.montantMiseDeFonds = montantMiseDeFonds;
         this.montantPret = prixAchat - montantMiseDeFonds;
-        this.resultatTraitement = new ResultatTraitementImpl(); // initialise à NONDETERMINE
+        this.resultatTraitement = new ResultatTraitementImpl(); 
     }
 
     /** Retourne le numéro unique de la demande */
@@ -54,20 +37,18 @@ public class DemandePretImpl implements DemandePret {
         return numeroDemande;
     }
 
-    /** Retourne la date de création de la demande */
+    /** Retourne la date de la demande */
     public Instant getDateDemande() {
         return dateDemande;
     }
 
     /** Retourne le demandeur */
-    
-    public DemandeurPret getDemandeurPret() {
+        public DemandeurPret getDemandeurPret() {
         return demandeurPret;
     }
 
     /** Retourne la propriété mise en garantie */
-    
-    public Propriete getPropriete() {
+        public Propriete getPropriete() {
         return propriete;
     }
 
@@ -77,8 +58,7 @@ public class DemandePretImpl implements DemandePret {
     }
 
     /** Retourne le montant de la mise de fonds */
-    
-    public float getMontantMiseDeFonds() {
+        public float getMontantMiseDeFonds() {
         return montantMiseDeFonds;
     }
 
@@ -97,7 +77,7 @@ public class DemandePretImpl implements DemandePret {
         this.resultatTraitement = etat;
     }
 
-    /** Retourne le ratio emprunt/valeur de marché */
+    /** Retourne le ratio de marché */
     public float getRatioEmpruntValeur() {
         if (propriete.getValeurDeMarche() <= 0) return 0f;
         return montantPret / propriete.getValeurDeMarche();
@@ -123,15 +103,7 @@ public class DemandePretImpl implements DemandePret {
         this.termesPret = terms;
     }
     public String toString() {
-        return "DemandePret{" +
-                "numeroDemande='" + numeroDemande + '\'' +
-                ", dateDemande=" + dateDemande +
-                ", demandeurPret=" + demandeurPret +
-                ", propriete=" + propriete +
-                ", prixAchat=" + prixAchat +
-                ", montantMiseDeFonds=" + montantMiseDeFonds +
-                ", montantPret=" + montantPret +
-                ", resultatTraitement=" + resultatTraitement +
+        return "DemandePret{" +"numeroDemande='" + numeroDemande + '\'' +", dateDemande=" + dateDemande +", demandeurPret=" + demandeurPret +", propriete=" + propriete +", prixAchat=" + prixAchat +", montantMiseDeFonds=" + montantMiseDeFonds +", montantPret=" + montantPret +", resultatTraitement=" + resultatTraitement +
                 '}';
     }
 }
